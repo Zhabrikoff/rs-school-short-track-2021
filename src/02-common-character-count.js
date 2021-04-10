@@ -13,15 +13,13 @@ function getCommonCharacterCount(s1, s2) {
   const str1 = s1.split('');
   const str2 = s2.split('');
 
-  /* eslint-disable no-param-reassign */
   return str1.reduce((acc, cur) => {
     if (str2.indexOf(cur) !== -1) {
       str2.splice(str2.indexOf(cur), 1);
-      acc += 1;
+      return acc + 1;
     }
     return acc;
   }, 0);
-  /* eslint-enable no-param-reassign */
 }
 
 module.exports = getCommonCharacterCount;
