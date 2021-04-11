@@ -11,7 +11,7 @@
  *  'yandex.ru'
  * ]
  *
- * The result should be the following:
+ * The obj should be the following:
  * {
  *   '.ru': 3,
  *   '.ru.yandex': 3,
@@ -20,8 +20,21 @@
  * }
  *
  */
-function getDNSStats(/* domains */) {
-  throw new Error('Not implemented');
+function getDNSStats(domains) {
+  const obj = {};
+
+  domains.map((elem) => {
+    elem.split('.').reverse().reduce((acc, item) => {
+      const str = `${acc}.${item}`;
+      obj[str] = obj[str] ? obj[str] += 1 : 1;
+
+      return str;
+    }, '');
+
+    return elem;
+  });
+
+  return obj;
 }
 
 module.exports = getDNSStats;
